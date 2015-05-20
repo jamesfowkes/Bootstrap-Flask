@@ -1,0 +1,29 @@
+{% macro bootstrap_form_text(input) %}
+<div class="form-group">
+{{ input.label }}
+{{ input(size=20, class="form-control") }}
+<div class="errors">
+{% for error in input.errors %}
+<span>{{ error }}</span>
+{% endfor %}
+</div>
+</div>
+{% endmacro %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Basic HTML File</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+
+<body>
+	<form method="POST" action="{{ form.action_url }}">
+    {{ form.csrf_token }}
+    {{ bootstrap_form_text(form.name) }}
+	<input type="submit" value="Go">
+	</form>
+</body>
+</html>
